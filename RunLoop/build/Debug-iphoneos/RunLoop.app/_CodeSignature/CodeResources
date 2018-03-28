@@ -44,6 +44,10 @@
 		<data>
 		n57qDP4tZfLD1rCS43W0B4LQjzE=
 		</data>
+		<key>beauty.jpg</key>
+		<data>
+		BYOnNywOrIDYSDdh2f2xTs93AQs=
+		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
 		vSLTg/DSVQbRhDB6MgSDCCR9Rn8=
@@ -137,6 +141,17 @@
 			<key>hash2</key>
 			<data>
 			sfHCgMteeOgAEeEw6YdcAeMZ7Fz1lCXZwoAaIfqi1YQ=
+			</data>
+		</dict>
+		<key>beauty.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BYOnNywOrIDYSDdh2f2xTs93AQs=
+			</data>
+			<key>hash2</key>
+			<data>
+			OdzsRkbxPc5oli2/CuMi2Xx/CtkjIvbbrOavF+ThHws=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>

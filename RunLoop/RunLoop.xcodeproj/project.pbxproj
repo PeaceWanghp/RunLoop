@@ -14,6 +14,8 @@
 		CE6DE399206903D700BA396B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6DE397206903D700BA396B /* LaunchScreen.storyboard */; };
 		CE6DE39C206903D700BA396B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6DE39B206903D700BA396B /* main.m */; };
 		CE6DE3A32069044000BA396B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = CE6DE3A22069044000BA396B /* .gitignore */; };
+		CEBD06A1206BB922006B69CE /* SpaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBD069F206BB922006B69CE /* SpaceCell.m */; };
+		CEBD06A3206BBAAE006B69CE /* beauty.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEBD06A2206BBAAE006B69CE /* beauty.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,9 @@
 		CE6DE39A206903D700BA396B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6DE39B206903D700BA396B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE6DE3A22069044000BA396B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		CEBD069F206BB922006B69CE /* SpaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceCell.m; sourceTree = "<group>"; };
+		CEBD06A0206BB922006B69CE /* SpaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceCell.h; sourceTree = "<group>"; };
+		CEBD06A2206BBAAE006B69CE /* beauty.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beauty.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,9 @@
 				CE6DE38D206903D600BA396B /* AppDelegate.m */,
 				CE6DE38F206903D600BA396B /* ViewController.h */,
 				CE6DE390206903D600BA396B /* ViewController.m */,
+				CEBD06A0206BB922006B69CE /* SpaceCell.h */,
+				CEBD069F206BB922006B69CE /* SpaceCell.m */,
+				CEBD06A2206BBAAE006B69CE /* beauty.jpg */,
 				CE6DE392206903D600BA396B /* Main.storyboard */,
 				CE6DE395206903D700BA396B /* Assets.xcassets */,
 				CE6DE397206903D700BA396B /* LaunchScreen.storyboard */,
@@ -136,6 +144,7 @@
 				CE6DE399206903D700BA396B /* LaunchScreen.storyboard in Resources */,
 				CE6DE396206903D700BA396B /* Assets.xcassets in Resources */,
 				CE6DE394206903D700BA396B /* Main.storyboard in Resources */,
+				CEBD06A3206BBAAE006B69CE /* beauty.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +157,7 @@
 			files = (
 				CE6DE391206903D600BA396B /* ViewController.m in Sources */,
 				CE6DE39C206903D700BA396B /* main.m in Sources */,
+				CEBD06A1206BB922006B69CE /* SpaceCell.m in Sources */,
 				CE6DE38E206903D600BA396B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

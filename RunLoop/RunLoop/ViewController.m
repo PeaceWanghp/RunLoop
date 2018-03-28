@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SpaceCell.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -174,7 +175,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height-y) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.rowHeight = 50;
+    tableView.rowHeight = 165;
     [self.view addSubview:tableView];
 }
 
@@ -184,37 +185,32 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"TableViewCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    UIImageView *imageView = nil;
-    UIImageView *imageView1 = nil;
-    UIImageView *imageView2 = nil;
+    SpaceCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.textLabel.text = @"Test Set Image";
-        imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
-        [cell.contentView addSubview:imageView];
-        
-        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height*2, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
-        [cell.contentView addSubview:imageView1];
-        
-        imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height*3, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
-        [cell.contentView addSubview:imageView2];
+        cell = [[SpaceCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    [imageView setImage:nil];
-    [imageView1 setImage:nil];
-    [imageView2 setImage:nil];
+    cell.topLabel.text =  [NSString stringWithFormat:@"%zd - show the title ", indexPath.row];
+    cell.bottomLabel.text = [NSString stringWithFormat:@"%zd - show the bottom title text.", indexPath.row];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //    [imageView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
-        //    [imageView1 performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
-        //    [imageView2 performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
-        
-        [imageView setImage:[UIImage imageNamed:@"testImage2"]];
-        [imageView1 setImage:[UIImage imageNamed:@"testImage"]];
-        [imageView2 setImage:[UIImage imageNamed:@"testImage3"]];
-    });
+    [cell.imgV1 setImage:nil];
+    [cell.imgV2 setImage:nil];
+    [cell.imgV3 setImage:nil];
+    
+    [cell.imgV1 performSelector:@selector(setImage:) withObject:getImg() afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+    [cell.imgV2 performSelector:@selector(setImage:) withObject:getImg() afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+    [cell.imgV3 performSelector:@selector(setImage:) withObject:getImg() afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+    
+//    cell.imgV1.image = getImg();
+//    cell.imgV2.image = getImg();
+//    cell.imgV3.image = getImg();
     
     return cell;
+}
+
+UIImage *getImg() {
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:@"beauty" ofType:@"jpg"];
+    UIImage *img = [UIImage imageWithContentsOfFile:path1];
+    return img;
 }
 
 @end
