@@ -79,7 +79,7 @@
     //};
     // 创建观察者
     CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
-        NSLog(@"监听到RunLoop发生改变---%zd",activity);
+        NSLog(@"RunLoop Changed Activity---%zd",activity);
     });
     // 添加观察者到当前RunLoop中
     CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
@@ -104,7 +104,10 @@
 }
 
 - (void)addActionToThread {
-    NSLog(@"----Do Action-----");
+    NSDate *date = [NSDate date];
+    NSLog(@"----Do Action1-----%f",date.timeIntervalSince1970);
+    sleep(3);
+    NSLog(@"----Do Action2-----%f",date.timeIntervalSince1970);
 }
 
 #pragma mark -
@@ -176,20 +179,40 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 500;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"TableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     UIImageView *imageView = nil;
+    UIImageView *imageView1 = nil;
+    UIImageView *imageView2 = nil;
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.textLabel.text = @"Test Set Image";
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
         [cell.contentView addSubview:imageView];
+        
+        imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height*2, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
+        [cell.contentView addSubview:imageView1];
+        
+        imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(cell.contentView.frame.size.width-cell.contentView.frame.size.height*3, 0, cell.contentView.frame.size.height, cell.contentView.frame.size.height)];
+        [cell.contentView addSubview:imageView2];
     }
-    [imageView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"cellHeader"] afterDelay:3 inModes:@[NSDefaultRunLoopMode]];
+    [imageView setImage:nil];
+    [imageView1 setImage:nil];
+    [imageView2 setImage:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //    [imageView performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+        //    [imageView1 performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+        //    [imageView2 performSelector:@selector(setImage:) withObject:[UIImage imageNamed:@"testImage3"] afterDelay:0 inModes:@[NSDefaultRunLoopMode]];
+        
+        [imageView setImage:[UIImage imageNamed:@"testImage2"]];
+        [imageView1 setImage:[UIImage imageNamed:@"testImage"]];
+        [imageView2 setImage:[UIImage imageNamed:@"testImage3"]];
+    });
     
     return cell;
 }
